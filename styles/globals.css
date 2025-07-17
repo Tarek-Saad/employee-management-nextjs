@@ -1,26 +1,361 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ========================================= */
+
+
+/* Employee Management System - Global CSS  */
+
+
+/* ========================================= */
+
+@layer base {
+     :root {
+        /* ===== ShadCN UI CSS Variables ===== */
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+        --radius: 0.5rem;
+        /* ===== Employee Management System Variables ===== */
+        --sidebar-width: 280px;
+        --header-height: 72px;
+        --content-padding: 24px;
+        /* Success, Warning, Info colors */
+        --success: 142 76% 36%;
+        --success-foreground: 355.7 100% 97.3%;
+        --warning: 38 92% 50%;
+        --warning-foreground: 48 96% 89%;
+        --info: 199 89% 48%;
+        --info-foreground: 210 20% 98%;
+        /* Department specific colors */
+        --hr-color: 210 100% 56%;
+        --finance-color: 142 71% 45%;
+        --engineering-color: 291 64% 42%;
+        --sales-color: 24 70% 50%;
+        --marketing-color: 346 87% 43%;
+        /* Status colors */
+        --status-active: 142 71% 45%;
+        --status-inactive: 0 0% 45%;
+        --status-pending: 38 92% 50%;
+        --status-on-leave: 199 89% 48%;
+        /* Attendance colors */
+        --attendance-present: 142 71% 45%;
+        --attendance-absent: 0 84% 60%;
+        --attendance-late: 38 92% 50%;
+        --attendance-half-day: 199 89% 48%;
+        /* Financial colors */
+        --income: 142 71% 45%;
+        --expense: 0 84% 60%;
+        --neutral: 210 40% 96%;
+        /* Animation variables */
+        --animation-duration: 0.3s;
+        --animation-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark {
+        /* ===== Dark Mode Variables ===== */
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 217.2 91.2% 59.8%;
+        --primary-foreground: 222.2 84% 4.9%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 224.3 76.3% 94.1%;
+    }
+    /* ===== Base Typography ===== */
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+    }
+    /* ===== Custom Scrollbar ===== */
+     ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+     ::-webkit-scrollbar-track {
+        @apply bg-muted/30;
+    }
+     ::-webkit-scrollbar-thumb {
+        @apply bg-muted-foreground/30 rounded-full;
+    }
+     ::-webkit-scrollbar-thumb:hover {
+        @apply bg-muted-foreground/50;
+    }
+    /* ===== Focus States ===== */
+    *:focus-visible {
+        @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    }
+    /* ===== Selection ===== */
+     ::selection {
+        @apply bg-primary/20 text-primary-foreground;
+    }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer components {
+    /* ===== Layout Components ===== */
+    .main-layout {
+        @apply min-h-screen bg-background;
+    }
+    .sidebar {
+        @apply h-screen bg-card border-r border-border;
+        width: var(--sidebar-width);
+    }
+    .main-content {
+        @apply flex-1 flex flex-col;
+        margin-left: var(--sidebar-width);
+    }
+    .page-header {
+        @apply bg-background/95 backdrop-blur supports-[backdrop-filter]: bg-background/60 border-b border-border;
+        height: var(--header-height);
+    }
+    .page-content {
+        @apply flex-1 p-6 space-y-6;
+        padding: var(--content-padding);
+    }
+    /* ===== Card Components ===== */
+    .stats-card {
+        @apply bg-card border border-border rounded-lg p-6 shadow-sm hover: shadow-md transition-shadow duration-300;
+    }
+    .stats-card-header {
+        @apply flex items-center justify-between space-y-0 pb-2;
+    }
+    .stats-card-title {
+        @apply text-sm font-medium text-muted-foreground;
+    }
+    .stats-card-value {
+        @apply text-2xl font-bold text-foreground;
+    }
+    .stats-card-description {
+        @apply text-xs text-muted-foreground;
+    }
+    .stats-card-icon {
+        @apply h-4 w-4 text-muted-foreground;
+    }
+    /* ===== Employee Cards ===== */
+    .employee-card {
+        @apply bg-card border border-border rounded-lg p-6 hover: shadow-md transition-all duration-300 hover: border-primary/50;
+    }
+    .employee-avatar {
+        @apply h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold;
+    }
+    .employee-status {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+    .employee-status.active {
+        @apply bg-green-100 text-green-800 dark: bg-green-900 dark: text-green-300;
+    }
+    .employee-status.inactive {
+        @apply bg-gray-100 text-gray-800 dark: bg-gray-900 dark: text-gray-300;
+    }
+    .employee-status.on-leave {
+        @apply bg-blue-100 text-blue-800 dark: bg-blue-900 dark: text-blue-300;
+    }
+    /* ===== Department Badges ===== */
+    .department-badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+    .department-badge.hr {
+        @apply bg-blue-100 text-blue-800 dark: bg-blue-900 dark: text-blue-300;
+    }
+    .department-badge.finance {
+        @apply bg-green-100 text-green-800 dark: bg-green-900 dark: text-green-300;
+    }
+    .department-badge.engineering {
+        @apply bg-purple-100 text-purple-800 dark: bg-purple-900 dark: text-purple-300;
+    }
+    .department-badge.sales {
+        @apply bg-orange-100 text-orange-800 dark: bg-orange-900 dark: text-orange-300;
+    }
+    .department-badge.marketing {
+        @apply bg-pink-100 text-pink-800 dark: bg-pink-900 dark: text-pink-300;
+    }
+    /* ===== Attendance Status ===== */
+    .attendance-status {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+    .attendance-status.present {
+        @apply bg-green-100 text-green-800 dark: bg-green-900 dark: text-green-300;
+    }
+    .attendance-status.absent {
+        @apply bg-red-100 text-red-800 dark: bg-red-900 dark: text-red-300;
+    }
+    .attendance-status.late {
+        @apply bg-yellow-100 text-yellow-800 dark: bg-yellow-900 dark: text-yellow-300;
+    }
+    .attendance-status.half-day {
+        @apply bg-blue-100 text-blue-800 dark: bg-blue-900 dark: text-blue-300;
+    }
+    /* ===== Navigation ===== */
+    .nav-item {
+        @apply flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors hover: bg-accent hover: text-accent-foreground;
+    }
+    .nav-item.active {
+        @apply bg-accent text-accent-foreground;
+    }
+    .nav-icon {
+        @apply mr-3 h-5 w-5 flex-shrink-0;
+    }
+    /* ===== Forms ===== */
+    .form-section {
+        @apply space-y-6 p-6 bg-card border border-border rounded-lg;
+    }
+    .form-section-title {
+        @apply text-lg font-semibold text-foreground border-b border-border pb-2;
+    }
+    .form-group {
+        @apply space-y-2;
+    }
+    .form-label {
+        @apply text-sm font-medium text-foreground;
+    }
+    .form-input {
+        @apply w-full px-3 py-2 text-sm bg-background border border-input rounded-md focus: outline-none focus: ring-2 focus: ring-ring focus: border-transparent;
+    }
+    .form-error {
+        @apply text-sm text-destructive;
+    }
+    .form-help {
+        @apply text-sm text-muted-foreground;
+    }
+    /* ===== Tables ===== */
+    .data-table {
+        @apply w-full border-collapse bg-card rounded-lg overflow-hidden border border-border;
+    }
+    .data-table th {
+        @apply px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider bg-muted/50 border-b border-border;
+    }
+    .data-table td {
+        @apply px-4 py-3 text-sm text-foreground border-b border-border/50;
+    }
+    .data-table tr:last-child td {
+        @apply border-b-0;
+    }
+    .data-table tr:hover {
+        @apply bg-muted/30;
+    }
+    /* ===== Loading States ===== */
+    .skeleton {
+        @apply animate-pulse bg-muted rounded;
+    }
+    .loading-spinner {
+        @apply animate-spin h-5 w-5 text-muted-foreground;
+    }
+    /* ===== Empty States ===== */
+    .empty-state {
+        @apply flex flex-col items-center justify-center py-12 text-center;
+    }
+    .empty-state-icon {
+        @apply h-12 w-12 text-muted-foreground mb-4;
+    }
+    .empty-state-title {
+        @apply text-lg font-semibold text-foreground mb-2;
+    }
+    .empty-state-description {
+        @apply text-sm text-muted-foreground max-w-sm;
+    }
+    /* ===== Responsive Design ===== */
+    @media (max-width: 768px) {
+        .main-content {
+            margin-left: 0;
+        }
+        .sidebar {
+            position: fixed;
+            left: -100%;
+            transition: left var(--animation-duration) var(--animation-ease);
+            z-index: 50;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .page-content {
+            padding: 16px;
+        }
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+    /* ===== Custom Utilities ===== */
+    .text-balance {
+        text-wrap: balance;
+    }
+    .animation-delay-100 {
+        animation-delay: 100ms;
+    }
+    .animation-delay-200 {
+        animation-delay: 200ms;
+    }
+    .animation-delay-300 {
+        animation-delay: 300ms;
+    }
+    .animation-delay-500 {
+        animation-delay: 500ms;
+    }
+    /* ===== Custom Shadows ===== */
+    .shadow-card {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    .shadow-card-hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    /* ===== Gradients ===== */
+    .gradient-primary {
+        background: linear-gradient( 135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+    }
+    .gradient-success {
+        background: linear-gradient( 135deg, hsl(var(--success)) 0%, hsl(var(--success) / 0.8) 100%);
+    }
+    .gradient-warning {
+        background: linear-gradient( 135deg, hsl(var(--warning)) 0%, hsl(var(--warning) / 0.8) 100%);
+    }
+    .gradient-info {
+        background: linear-gradient( 135deg, hsl(var(--info)) 0%, hsl(var(--info) / 0.8) 100%);
+    }
+    /* ===== Print Styles ===== */
+    @media print {
+        .no-print {
+            display: none !important;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        body {
+            print-color-adjust: exact;
+        }
+    }
 }

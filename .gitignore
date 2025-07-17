@@ -1,43 +1,227 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# =========================================
+# Employee Management System - .gitignore
+# =========================================
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+.env.production
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# Node.js dependencies
+node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env.local
-.env.production
-
-# vercel
-.vercel
-
-# typescript
+# TypeScript build output
+dist/
+build/
 *.tsbuildinfo
 next-env.d.ts
+
+# Logs
+logs/
+*.log
+*.log.*
+log/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# next.js build output
+.next/
+out/
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Database files (SQLite, etc.)
+*.sqlite
+*.sqlite3
+*.db
+
+# Backup files
+*.backup
+*.bak
+*.sql.backup
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.cert
+
+# Documentation output
+docs/build/
+docs/_build/
+
+# Test files
+test-results/
+test-coverage/
+
+# Upload directories
+uploads/
+files/
+attachments/
+
+# Static files (if generated)
+static/
+public/build/
+
+# PM2 files
+ecosystem.config.js
+.pm2/
+
+# Docker files (optional, comment out if you want to include them)
+# Dockerfile
+# docker-compose.yml
+# .dockerignore
+
+# Kubernetes files (optional)
+k8s/
+*.yaml
+*.yml
+
+# Terraform files (optional)
+*.tfstate
+*.tfstate.*
+
+# Vercel
+.vercel
+
+# Turbo
+.turbo
+
+# Sentry
+.sentryclirc
+
+# Bundle analyzer
+.next/analyze/
+analyze/
+*.analyze.html
+nodejs.html
+
+# Performance analysis
+lighthouse/
+speed-insights/
+bundle-report.html
+stats.json
+
 .history
+.husky
