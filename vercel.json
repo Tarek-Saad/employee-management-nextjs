@@ -10,12 +10,7 @@
         }
     },
 
-    "env": {
-        "DATABASE_URL": "@database-url",
-        "NEXTAUTH_SECRET": "@nextauth-secret",
-        "NEXTAUTH_URL": "@nextauth-url",
-        "JWT_SECRET": "@jwt-secret"
-    },
+    "env": {},
 
     "functions": {
         "pages/api/**/*.ts": {
